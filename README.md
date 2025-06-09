@@ -1,4 +1,4 @@
-<div align="center">
+![image](https://github.com/user-attachments/assets/c910976c-f649-4300-8d6a-65b092f89116)<div align="center">
 
 # 🍽️ AI Food Ordering Chatbot with NLP
 
@@ -42,11 +42,18 @@ This project demonstrates the power of **Natural Language Processing** in creati
 <div align="center">
 
 ### 🖥️ Web Interface
-![Web Interface](screenshots/web-interface.png)
+
+![Screenshot 2025-06-09 121714](https://github.com/user-attachments/assets/4a571a70-2244-414e-b89f-7b42a6dffaf0)
+
+![Screenshot 2025-06-09 121731](https://github.com/user-attachments/assets/03c10461-3f2b-4115-ae76-022f45562ef0)
+
+
 *Clean and intuitive web interface with integrated chatbot*
 
 ### 💬 Intelligent Conversations
-![Chatbot Demo](screenshots/chatbot-conversation.png)
+
+![Screenshot 2025-06-09 122412](https://github.com/user-attachments/assets/a81c2cfb-c9d0-4c96-abc9-05bc38a77bc9)
+
 *Natural language understanding for seamless food ordering*
 
 ### 📋 Order Management
@@ -60,8 +67,8 @@ This project demonstrates the power of **Natural Language Processing** in creati
 ### ⚙️ Backend Systems
 <table>
 <tr>
-<td><img src="screenshots/dialogflow-console.png" alt="Dialogflow Setup" width="400"/><br/><i>Dialogflow NLP Configuration</i></td>
-<td><img src="screenshots/database-schema.png" alt="Database Schema" width="400"/><br/><i>MySQL Database Architecture</i></td>
+<td><img src="https://github.com/user-attachments/assets/3ac7bb51-7f61-4224-b730-e2a4ad3b8f2a" alt="Dialogflow Setup" width="400"/><br/><i>Dialogflow NLP Configuration</i></td>
+<td><img src="https://github.com/user-attachments/assets/912df72f-a469-4606-b97c-480b27ff6a1f" alt="Database Schema" width="400"/><br/><i>MySQL Database Architecture</i></td>
 </tr>
 </table>
 
