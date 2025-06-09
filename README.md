@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c910976c-f649-4300-8d6a-65b092f89116)<div align="center">
+<div align="center">
 
 # 🍽️ AI Food Ordering Chatbot with NLP
 
