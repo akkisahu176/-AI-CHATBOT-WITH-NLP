@@ -57,20 +57,24 @@ This project demonstrates the power of **Natural Language Processing** in creati
 *Natural language understanding for seamless food ordering*
 
 ### 📋 Order Management
-<table>
-<tr>
-<td><img src="" alt="Order Placement" width="400"/><br/><i>Smart Order Placement</i></td>
-<td><img src="screenshots/order-tracking.png" alt="Order Tracking" width="400"/><br/><i>Real-time Order Tracking</i></td>
-</tr>
-</table>
+
+![Screenshot 2025-06-09 122412](https://github.com/user-attachments/assets/50887c0d-c7fa-4143-b3f9-97bcd8766d20)
+
+*Smart Order Placement*
+
+![Track Order](https://github.com/user-attachments/assets/f3ef1226-4a85-4391-8c49-4bb453b587c1)
+
+*Real-time Order Tracking*
+
 
 ### ⚙️ Backend Systems
-<table>
-<tr>
-<td><img src="https://github.com/user-attachments/assets/3ac7bb51-7f61-4224-b730-e2a4ad3b8f2a" alt="Dialogflow Setup" width="400"/><br/><i>Dialogflow NLP Configuration</i></td>
-<td><img src="https://github.com/user-attachments/assets/912df72f-a469-4606-b97c-480b27ff6a1f" alt="Database Schema" width="400"/><br/><i>MySQL Database Architecture</i></td>
-</tr>
-</table>
+
+![Screenshot 2025-06-09 122412](https://github.com/user-attachments/assets/3ac7bb51-7f61-4224-b730-e2a4ad3b8f2a) 
+
+*Dialogflow NLP Configuration*
+
+![Screenshot 2025-06-09 122412](https://github.com/user-attachments/assets/912df72f-a469-4606-b97c-480b27ff6a1f)
+*MySQL Database Architecture*
 
 </div>
 
