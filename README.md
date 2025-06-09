@@ -52,7 +52,7 @@ This project demonstrates the power of **Natural Language Processing** in creati
 ### 📋 Order Management
 <table>
 <tr>
-<td><img src="screenshots/order-placement.png" alt="Order Placement" width="400"/><br/><i>Smart Order Placement</i></td>
+<td><img src="" alt="Order Placement" width="400"/><br/><i>Smart Order Placement</i></td>
 <td><img src="screenshots/order-tracking.png" alt="Order Tracking" width="400"/><br/><i>Real-time Order Tracking</i></td>
 </tr>
 </table>
@@ -285,13 +285,13 @@ ngrok http --domain=your-foodbot.ngrok-free.app 8000
 <div align="center">
 
 ```
-👤 User: "I want to order 2 large pizzas and 3 cokes"
-🤖 Bot:  "Perfect! I've added 2 large pizzas and 3 cokes to your cart. 
-         Your total is $24.99. Would you like to add anything else?"
-
-👤 User: "That's all!"
-🤖 Bot:  "Great! Your order #1234 has been placed. 
-         Estimated delivery time: 25-30 minutes."
+🤖 Bot: "Greetings ! How can I assist? You can say 'New Order' or 'Track Order'"
+👤 User: "new order"
+🤖 Bot: "Ok, starting a new order. You can say things like 'I want two pizzas and one mango lassi'. Make sure to specify a quantity for every food item! Also, we have only the following items on our menu: Pav Bhaji, Chole Bhature, Pizza, Mango Lassi, Masala Dosa, Biryani, Vada Pav, Rava Dosa, and Samosa"
+👤 User: "I want two pizza"
+🤖 Bot: "So far you have: 2 Pizza. Do you need anything else?"
+👤 User: "done"
+🤖 Bot: "Awesome. We have placed your order. Here is your order id # 44. Your order total is 16.00 which you can pay at the time of delivery!"
 ```
 
 </div>
@@ -300,13 +300,10 @@ ngrok http --domain=your-foodbot.ngrok-free.app 8000
 <div align="center">
 
 ```
-👤 User: "What's the status of order #1234?"
-🤖 Bot:  "Your order #1234 is being prepared! 🍕
-         Current status: In Kitchen
-         Estimated time: 15 minutes remaining"
-
-👤 User: "Thanks!"
-🤖 Bot:  "You're welcome! I'll notify you when it's ready for delivery."
+👤 User: "track my order"
+🤖 Bot: "Sure. Please enter your order id."
+👤 User: "order id is 44"
+🤖 Bot: "The order status for order id: 44 is: in progress"
 ```
 
 </div>
@@ -369,20 +366,24 @@ flowchart TB
 
 <div align="center">
 
-### **Core Tables**
+### **Spice Kingdom Database Structure**
 
-| **Table** | **Purpose** | **Key Fields** |
-|-----------|-------------|----------------|
-| 🍽️ `menu_items` | Food catalog | `item_id`, `name`, `price`, `category` |
-| 📋 `orders` | Order records | `order_id`, `customer_info`, `status`, `timestamp` |
-| 🛒 `order_items` | Order details | `order_id`, `item_id`, `quantity`, `notes` |
-| 👤 `customers` | User profiles | `customer_id`, `name`, `phone`, `address` |
-| 📊 `order_tracking` | Status updates | `order_id`, `status`, `timestamp`, `notes` |
+| **Table** | **Purpose** | **Key Fields** | **Data Types** |
+|-----------|-------------|----------------|----------------|
+| 🍽️ `food_items` | Food catalog & menu | `item_id` (PK), `name`, `price` | `int`, `varchar(255)`, `decimal(10,2)` |
+| 📋 `orders` | Order records | `order_id` (PK), `item_id` (FK), `quantity`, `total_price` | `int`, `int`, `int`, `decimal(10,2)` |
+| 📊 `order_tracking` | Order status tracking | `order_id` (PK), `status` | `int`, `varchar(255)` |
 
-</div>
+### **Database Functions & Procedures**
+- 🔧 `insert_order_item()` - Stored procedure for adding items to orders
+- 💰 `get_price_for_item()` - Function to retrieve item pricing
+- 🧮 `get_total_order_price()` - Function to calculate total order cost
 
----
-
+### **Schema Relationships**
+```
+food_items (item_id) ←→ orders (item_id)
+orders (order_id) ←→ order_tracking (order_id)
+```
 ## 🔧 Configuration
 
 ### **Database Settings**
@@ -390,7 +391,7 @@ flowchart TB
 # db_helper.py configuration
 DB_CONFIG = {
     'host': 'localhost',
-    'user': 'your_username',
+    'user': 'root',
     'password': 'your_password',
     'database': 'spice_kingdom',
     'port': 3306
@@ -482,19 +483,19 @@ ngrok config add-authtoken YOUR_NEW_TOKEN
 
 <div align="center">
 
-### **🎯 Short-term Goals (Q2 2024)**
+### **🎯 Short-term Goals **
 - 💳 Payment Gateway Integration (Stripe/PayPal)
 - 👤 User Authentication & Profiles
 - 📧 Email/SMS Notifications
 - 🎨 Enhanced UI/UX Design
 
-### **🚀 Medium-term Goals (Q3-Q4 2024)**
+### **🚀 Medium-term Goals **
 - 🎤 Voice Ordering Capability
 - 📍 Real-time GPS Tracking
 - 🤖 AI-powered Recommendations
 - 📊 Analytics Dashboard
 
-### **🌟 Long-term Vision (2025)**
+### **🌟 Long-term Vision **
 - 🌐 Multi-language Support
 - 🏪 Multi-restaurant Platform
 - 📱 Native Mobile Apps
@@ -539,7 +540,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <div align="center">
 
 ### **Akhil Sahu**
-*Full Stack Developer & AI Enthusiast*
+*Python Developer & AI Enthusiast*
 
 [![GitHub](https://img.shields.io/badge/GitHub-akkisahu176-black?style=for-the-badge&logo=github)](https://github.com/akkisahu176)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Akhil%20Sahu-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/akhil-sahu-569a111ba)
@@ -598,6 +599,6 @@ Modify the response templates in your Dialogflow console or update the webhook h
 
 **Built with ❤️ and lots of ☕**
 
-*© 2024 Akhil Sahu. All rights reserved.*
+*© 2025 Akhil Sahu. All rights reserved.*
 
 </div>
