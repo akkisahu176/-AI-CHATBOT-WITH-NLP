@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Kingdom - Authentic Indian Cuisine</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .logo .crown {
+            color: #ff6b35;
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff6b35 0%, #d2691e 50%, #8b4513 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle fill="rgba(255,215,0,0.1)" cx="200" cy="200" r="100"/><circle fill="rgba(255,107,53,0.1)" cx="800" cy="300" r="150"/><circle fill="rgba(139,69,19,0.1)" cx="500" cy="700" r="120"/></svg>');
+            animation: float 25s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(1deg); }
+            66% { transform: translateY(15px) rotate(-1deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #ffd700, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #8b4513;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 3px solid #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: #ffd700;
+            color: #8b4513;
+        }
+
+        .chat-trigger {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff5e6 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #8b4513;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #8b4513;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #cad50b 0%, #a0522d 50%, #d2691e 100%);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .menu-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            border-color: #ffd700;
+        }
+
+        .menu-item .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .menu-item p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .menu-item .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Order Section */
+        .order-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .order-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .order-section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .order-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .order-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .order-feature {
+            background: rgba(255,107,53,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,107,53,0.3);
+        }
+
+        .order-feature i {
+            font-size: 2rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            background: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #ffd700;
+            color: #8b4513;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Chatbot Styling */
+        df-messenger {
+            --df-messenger-bot-message: #ff6b35;
+            --df-messenger-button-titlebar-color: #8b4513;
+            --df-messenger-chat-background-color: #fafafa;
+            --df-messenger-font-color: white;
+            --df-messenger-send-icon: #ff6b35;
+            --df-messenger-user-message: #ffd700;
+            --df-messenger-input-box-color: #f5f5f5;
+        }
+
+        .chat-floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b35, #d2691e);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: bounce 3s infinite;
+        }
+
+        .chat-floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.7);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-8px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .features-grid, .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-crown crown"></i>Spice Kingdom
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1><i class="fas fa-crown"></i> Spice Kingdom</h1>
+            <p class="subtitle">Authentic Indian Cuisine</p>
+            <p>Experience the royal flavors of India, delivered fresh to your doorstep. Order now through our smart assistant!</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary chat-trigger" onclick="openChat()">
+                    <i class="fas fa-comments"></i> Order Now
+                </button>
+                <a href="#menu" class="btn btn-secondary">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose Spice Kingdom?</h2>
+            <p class="section-subtitle">Discover what makes us the royal choice for Indian cuisine</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Smart AI Assistant</h3>
+                    <p>Our intelligent chatbot understands your cravings and helps you order exactly what you want, anytime!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-pepper-hot"></i>
+                    </div>
+                    <h3>Authentic Spices</h3>
+                    <p>We import the finest spices from India to create authentic flavors that transport you to the streets of Mumbai and Delhi.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Lightning Fast Delivery</h3>
+                    <p>Hot, fresh food delivered to your door in under 30 minutes. Your satisfaction is our royal command!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Royal Menu</h2>
+            <p class="section-subtitle">Handcrafted dishes that define Indian culinary excellence</p>
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="emoji">🍛</div>
+                    <h4>Pav Bhaji</h4>
+                    <p>Mumbai's famous street food - spiced mashed vegetables with buttered bread rolls</p>
+                    <div class="price">$6.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🫓</div>
+                    <h4>Chole Bhature</h4>
+                    <p>North Indian classic - spicy chickpeas with fluffy fried bread</p>
+                    <div class="price">$7.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🍕</div>
+                    <h4>Pizza</h4>
+                    <p>Indian-style pizza with aromatic spices and fresh toppings</p>
+                    <div class="price">$8.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🥤</div>
+                    <h4>Mango Lassi</h4>
+                    <p>Creamy yogurt drink blended with sweet mangoes - a royal refresher</p>
+                    <div class="price">$5.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🥞</div>
+                    <h4>Masala Dosa</h4>
+                    <p>Crispy South Indian crepe filled with spiced potato curry</p>
+                    <div class="price">$6.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🍚</div>
+                    <h4>Vegetable Biryani</h4>
+                    <p>Aromatic basmati rice layered with vegetables and royal spices</p>
+                    <div class="price">$9.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🥪</div>
+                    <h4>Vada Pav</h4>
+                    <p>Mumbai's beloved burger - spiced potato fritter in soft bread</p>
+                    <div class="price">$4.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🥞</div>
+                    <h4>Rava Dosa</h4>
+                    <p>Crispy semolina crepe with a golden, lacy texture</p>
+                    <div class="price">$7.00</div>
+                </div>
+                <div class="menu-item fade-in">
+                    <div class="emoji">🥟</div>
+                    <h4>Samosa</h4>
+                    <p>Crispy triangular pastries filled with spiced potatoes and peas</p>
+                    <div class="price">$5.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-content">
+                <h2>Ready to Experience Royal Flavors?</h2>
+                <p>Chat with our AI assistant to place your order instantly. Available 24/7 to serve your cravings!</p>
+                
+                <div class="order-features">
+                    <div class="order-feature">
+                        <i class="fas fa-clock"></i>
+                        <h4>24/7 Ordering</h4>
+                    </div>
+                    <div class="order-feature">
+                        <i class="fas fa-heart"></i>
+                        <h4>Personalized Service</h4>
+                    </div>
+                    <div class="order-feature">
+                        <i class="fas fa-thumbs-up"></i>
+                        <h4>Easy & Quick</h4>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary chat-trigger" onclick="openChat()">
+                    <i class="fas fa-comments"></i> Start Ordering Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-crown"></i> Spice Kingdom</h3>
+                    <p>Bringing you the finest Indian cuisine with royal treatment and modern convenience.</p>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +1 (555) SPICE-99</p>
+                    <p><i class="fas fa-envelope"></i> orders@spicekingdom.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Curry Lane, Flavor City</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Royal Hours</h3>
+                    <p><i class="fas fa-clock"></i> Monday - Thursday: 11AM - 10PM</p>
+                    <p><i class="fas fa-clock"></i> Friday - Sunday: 11AM - 11PM</p>
+                    <p><i class="fas fa-robot"></i> <strong>AI Assistant: 24/7</strong></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Spice Kingdom. All rights reserved. | Crafted with ❤️ and spices</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Dialogflow Messenger -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+        intent="WELCOME"
+        chat-title="Spice Kingdom Assistant"
+        agent-id="5adbec9e-2c24-4b15-a865-e6365581db29"
+        language-code="en"
+        chat-icon="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+    ></df-messenger>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Open chat function
+        function openChat() {
+            const messenger = document.querySelector('df-messenger');
+            if (messenger) {
+                // Try to trigger the chat to open
+                const event = new CustomEvent('df-messenger-toggle');
+                messenger.dispatchEvent(event);
+            }
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(139, 69, 19, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                header.style.background = 'rgba(139, 69, 19, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.fontSize = '20px';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'sparkleFloat 3s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Add sparkle animation CSS
+        const sparkleCSS = `
+            @keyframes sparkleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) rotate(360deg);
+                }
+            }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = sparkleCSS;
+        document.head.appendChild(style);
+
+        // Create sparkles occasionally
+        setInterval(createSparkle, 5000);
+
+        // Welcome message
+        console.log('🍛 Welcome to Spice Kingdom! 👑');
+        console.log('Chat with our AI assistant to order delicious Indian food!');
+    </script>
+</body>
+</html>
